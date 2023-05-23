@@ -36,6 +36,7 @@ function onGalleryItemClick(event) {
     if (event.target.nodeName !== "IMG") {
         return;
 }
+
 // Заміна значення атрибута src елемента <img> в модальному вікні перед відкриттям
     const instance = basicLightbox.create(`
     <div class="modal">
@@ -51,7 +52,14 @@ function onGalleryItemClick(event) {
     }
 }
 );
+
     instance.show();;
+
+    // Закриття кліком на саму картинку
+    const modalElement = document.querySelector('.modal');
+    modalElement.addEventListener('click', () => {
+        instance.close();
+    });
 
     // Закриття з клавіатури
     function closeModal(event) {
@@ -60,6 +68,8 @@ function onGalleryItemClick(event) {
         instance.close();
     }
 };
+
+
 
 
 
